@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import Script from 'next/script';
 
 interface RealAdContainerProps {
@@ -12,6 +12,9 @@ interface RealAdContainerProps {
 
 export default function RealAdContainer({ adType, onClick, className = '', title }: RealAdContainerProps) {
   const adRef = useRef<HTMLDivElement>(null);
+  
+  // Generate stable ID for each ad instance using adType
+  const adId = useMemo(() => `${adType}-${Date.now().toString(36)}`, []);
 
   const handleAdClick = () => {
     onClick();
@@ -21,15 +24,15 @@ export default function RealAdContainer({ adType, onClick, className = '', title
     switch (adType) {
       case 'banner-468x60':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-blue-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-blue-600 px-4 py-2 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
-            <div className="p-2">
-              <div className="w-full min-h-[60px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`banner-468x60-${Math.random()}`}>
+            <div className="p-3">
+              <div className="w-full min-h-[60px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`banner-468x60-${adId}`}>
                   {`
                     atOptions = {
                       'key' : 'a1bc5a1e59c5468243f3048190ac9fa9',
@@ -48,15 +51,15 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       case 'banner-300x250':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-purple-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-purple-600 px-4 py-2 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
-            <div className="p-2">
-              <div className="w-full min-h-[250px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`banner-300x250-${Math.random()}`}>
+            <div className="p-3">
+              <div className="w-full min-h-[250px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`banner-300x250-${adId}`}>
                   {`
                     atOptions = {
                       'key' : 'a388ca2af8457b290856c125811ac381',
@@ -75,15 +78,15 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       case 'skyscraper-160x300':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-green-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-2 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-green-600 px-3 py-2 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
-            <div className="p-2">
-              <div className="w-full min-h-[300px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`skyscraper-160x300-${Math.random()}`}>
+            <div className="p-3">
+              <div className="w-full min-h-[300px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`skyscraper-160x300-${adId}`}>
                   {`
                     atOptions = {
                       'key' : '74fecf5727a3b75fdd3fa5f6dfd32702',
@@ -102,15 +105,15 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       case 'skyscraper-160x600':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-indigo-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-2 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-indigo-600 px-3 py-2 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
-            <div className="p-2">
-              <div className="w-full min-h-[600px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`skyscraper-160x600-${Math.random()}`}>
+            <div className="p-3">
+              <div className="w-full min-h-[600px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`skyscraper-160x600-${adId}`}>
                   {`
                     atOptions = {
                       'key' : '5c47052fe2ed147e484f0f8f22a195a2',
@@ -129,15 +132,15 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       case 'mobile-banner-320x50':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-cyan-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-cyan-600 px-4 py-2 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
-            <div className="p-2">
-              <div className="w-full min-h-[50px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`mobile-banner-320x50-${Math.random()}`}>
+            <div className="p-3">
+              <div className="w-full min-h-[50px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`mobile-banner-320x50-${adId}`}>
                   {`
                     atOptions = {
                       'key' : 'ce20dc930600898be06db897979ab284',
@@ -156,15 +159,15 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       case 'leaderboard-728x90':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-yellow-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-yellow-600 px-4 py-2 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
             <div className="p-3">
-              <div className="w-full min-h-[90px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`leaderboard-728x90-${Math.random()}`}>
+              <div className="w-full min-h-[90px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`leaderboard-728x90-${adId}`}>
                   {`
                     atOptions = {
                       'key' : '92c8efaac9aec6de86f242bd4cf5e90b',
@@ -180,15 +183,17 @@ export default function RealAdContainer({ adType, onClick, className = '', title
             </div>
           </div>
         );
+
+      case 'container':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-emerald-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-emerald-600 px-4 py-2 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
-            <div className="p-2">
-              <div className="w-full min-h-[200px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
+            <div className="p-3">
+              <div className="w-full min-h-[200px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
                 <Script 
                   async 
                   data-cfasync="false" 
@@ -202,37 +207,45 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       case 'direct-link':
         return (
-          <div className={`bg-gradient-to-r from-blue-500 to-purple-600 rounded-md overflow-hidden cursor-pointer hover:from-blue-600 hover:to-purple-700 transition-all ${className}`} onClick={handleAdClick}>
-            <div className="p-4 text-white text-center">
-              <div className="text-xl font-bold mb-2">🎯 Exclusive Offer!</div>
-              <p className="mb-3 text-sm opacity-90">Click here for special deals</p>
-              <a 
-                href="https://www.effectivegatecpm.com/x5kjfdhe?key=2d99602e86ebc798fcb36d0c2c1d0cb4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-blue-600 px-4 py-2 rounded-full inline-block font-bold text-sm hover:bg-gray-100 transition-all"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleAdClick();
-                }}
-              >
-                Click Now!
-              </a>
+          <div className={`bg-pink-600 rounded-lg overflow-hidden cursor-pointer hover:bg-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl ${className}`} onClick={handleAdClick}>
+            <div className="p-6 text-white text-center relative">
+              <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+              <div className="relative z-10">
+                <div className="text-2xl font-bold mb-3 flex items-center justify-center">
+                  <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Exclusive Premium Access
+                </div>
+                <p className="mb-4 text-sm opacity-90">Unlock premium features and exclusive content</p>
+                <a 
+                  href="https://www.effectivegatecpm.com/x5kjfdhe?key=2d99602e86ebc798fcb36d0c2c1d0cb4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-purple-600 px-6 py-3 rounded-full inline-block font-bold text-sm hover:bg-gray-100 transition-all transform hover:scale-105"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAdClick();
+                  }}
+                >
+                  Get Premium Access →
+                </a>
+              </div>
             </div>
           </div>
         );
 
       case 'large-banner':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-orange-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-orange-600 px-3 py-1 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
             <div className="p-3">
-              <div className="w-full min-h-[100px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`large-banner-${Math.random()}`}>
+              <div className="w-full min-h-[100px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`large-banner-${adId}`}>
                   {`
                     atOptions = {
                       'key' : 'a1bc5a1e59c5468243f3048190ac9fa9',
@@ -251,15 +264,15 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       case 'mobile-banner':
         return (
-          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg overflow-hidden hover:border-teal-500 transition-all duration-300 ${className}`} onClick={handleAdClick}>
             {title && (
-              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
-                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              <div className="bg-teal-600 px-3 py-1 text-center">
+                <span className="text-xs text-white font-medium uppercase tracking-wide">{title}</span>
               </div>
             )}
             <div className="p-2">
-              <div className="w-full min-h-[50px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
-                <Script id={`mobile-banner-${Math.random()}`}>
+              <div className="w-full min-h-[50px] bg-slate-900 rounded border border-slate-700 flex items-center justify-center overflow-hidden hover:bg-slate-800 transition-colors">
+                <Script id={`mobile-banner-${adId}`}>
                   {`
                     atOptions = {
                       'key' : 'a1bc5a1e59c5468243f3048190ac9fa9',
@@ -278,8 +291,8 @@ export default function RealAdContainer({ adType, onClick, className = '', title
 
       default:
         return (
-          <div className={`bg-gray-100 border border-gray-200 rounded-md p-4 ${className}`}>
-            <div className="text-center text-gray-500 text-sm">Advertisement</div>
+          <div className={`bg-slate-800 border border-slate-700 rounded-lg p-4 ${className}`}>
+            <div className="text-center text-gray-400 text-sm">Advertisement</div>
           </div>
         );
     }

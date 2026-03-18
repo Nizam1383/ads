@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import RealAdContainer from '../components/RealAdContainer';
 
@@ -8,7 +8,11 @@ export default function Step3() {
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState(10);
   const [adClicked, setAdClicked] = useState(false);
-  const [canProceed, setCanProceed] = useState(false);
+  
+  // Calculate canProceed based on current state
+  const canProceed = useMemo(() => {
+    return timeLeft === 0 && adClicked;
+  }, [timeLeft, adClicked]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -23,12 +27,6 @@ export default function Step3() {
 
     return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    if (timeLeft === 0 && adClicked) {
-      setCanProceed(true);
-    }
-  }, [timeLeft, adClicked]);
 
   const handleAdClick = () => {
     setAdClicked(true);
@@ -47,7 +45,7 @@ export default function Step3() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-800">🔐 Link Gateway</h1>
-            <p className="text-gray-600 mt-1">Final Step - You're almost there!</p>
+            <p className="text-gray-600 mt-1">Final Step - You&apos;re almost there!</p>
             <div className="mt-2 inline-flex items-center bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
               🔥 FINAL STEP - UNLOCK COMING SOON!
             </div>
@@ -100,7 +98,7 @@ export default function Step3() {
         {/* Featured Premium Offer */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-4 mb-4 text-white text-center">
           <h2 className="text-xl font-bold mb-2">🌟 EXCLUSIVE FINAL OFFER! 🌟</h2>
-          <p className="mb-3">Don't miss this last chance - click any ad below to unlock</p>
+          <p className="mb-3">Don&apos;t miss this last chance - click any ad below to unlock</p>
         </div>
 
         {/* Main Content Grid */}

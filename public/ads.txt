@@ -1,0 +1,14 @@
+# ads.txt file for SecureLink Pro
+# This file helps ad networks verify our site
+
+# HighPerformanceFormat
+highperformanceformat.com, pub-XXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# EffectiveGateCPM  
+effectivegatecpm.com, pub-XXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Google AdSense (if you add it later)
+google.com, pub-XXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Add your actual publisher IDs above
+# Replace XXXXXXXXX with your real publisher IDs from each network

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import RealAdContainer from '../components/RealAdContainer';
 
@@ -8,7 +8,11 @@ export default function Step2() {
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState(15);
   const [adClicked, setAdClicked] = useState(false);
-  const [canProceed, setCanProceed] = useState(false);
+  
+  // Calculate canProceed based on current state
+  const canProceed = useMemo(() => {
+    return timeLeft === 0 && adClicked;
+  }, [timeLeft, adClicked]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -23,12 +27,6 @@ export default function Step2() {
 
     return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    if (timeLeft === 0 && adClicked) {
-      setCanProceed(true);
-    }
-  }, [timeLeft, adClicked]);
 
   const handleAdClick = () => {
     setAdClicked(true);
@@ -47,7 +45,7 @@ export default function Step2() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-800">🔐 Link Gateway</h1>
-            <p className="text-gray-600 mt-1">Step 2 of 3 - You're doing great!</p>
+            <p className="text-gray-600 mt-1">Step 2 of 3 - You&apos;re doing great!</p>
           </div>
         </div>
       </div>
@@ -169,7 +167,7 @@ export default function Step2() {
           <div className="bg-white rounded-lg border border-gray-200 p-4">
             <h4 className="font-semibold text-gray-800 mb-2">🌟 Almost There!</h4>
             <p className="text-sm text-gray-600 mb-3">
-              You're on step 2 of 3. Just one more step after this to unlock your content!
+              You&apos;re on step 2 of 3. Just one more step after this to unlock your content!
             </p>
             <div className="text-xs text-gray-500">
               Step 2 of 3 • 1 more step to unlock
