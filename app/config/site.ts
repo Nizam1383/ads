@@ -42,6 +42,18 @@ export const siteConfig = {
       skyscraper160x300: {
         key: "74fecf5727a3b75fdd3fa5f6dfd32702",
         script: "https://www.highperformanceformat.com/74fecf5727a3b75fdd3fa5f6dfd32702/invoke.js"
+      },
+      skyscraper160x600: {
+        key: "5c47052fe2ed147e484f0f8f22a195a2",
+        script: "https://www.highperformanceformat.com/5c47052fe2ed147e484f0f8f22a195a2/invoke.js"
+      },
+      mobileBanner320x50: {
+        key: "ce20dc930600898be06db897979ab284",
+        script: "https://www.highperformanceformat.com/ce20dc930600898be06db897979ab284/invoke.js"
+      },
+      leaderboard728x90: {
+        key: "92c8efaac9aec6de86f242bd4cf5e90b",
+        script: "https://www.highperformanceformat.com/92c8efaac9aec6de86f242bd4cf5e90b/invoke.js"
       }
     }
   },
@@ -49,35 +61,39 @@ export const siteConfig = {
   // Ad Placement Strategy
   adPlacements: {
     step1: {
-      topBanner: "banner-468x60",
-      leftSidebar: "skyscraper-160x300",
+      topBanner: "leaderboard-728x90",
+      leftSidebar: "skyscraper-160x600",
       centerMedium: "banner-300x250",
-      rightSidebar: "container",
-      directLink: "direct-link"
+      rightSidebar: "skyscraper-160x600",
+      directLink: "direct-link",
+      mobileBanner: "mobile-banner-320x50"
     },
     step2: {
-      topBanner: "banner-468x60",
-      leftSidebar: "skyscraper-160x300",
+      topBanner: "leaderboard-728x90",
+      leftSidebar: "skyscraper-160x600",
       centerGrid: ["banner-300x250", "banner-300x250"],
-      rightSidebar: "skyscraper-160x300",
+      rightSidebar: "skyscraper-160x600",
       container: "container",
-      directLink: "direct-link"
+      directLink: "direct-link",
+      mobileBanner: "mobile-banner-320x50"
     },
     step3: {
-      topBanner: "banner-468x60",
-      leftSidebar: "skyscraper-160x300",
+      topBanner: "leaderboard-728x90",
+      leftSidebar: "skyscraper-160x600",
       centerGrid: ["banner-300x250", "banner-300x250"],
-      rightSidebar: "skyscraper-160x300",
+      rightSidebar: "skyscraper-160x600",
       container: "container",
-      directLink: "direct-link"
+      directLink: "direct-link",
+      mobileBanner: "mobile-banner-320x50"
     },
     unlock: {
-      topBanner: "banner-468x60",
-      bottomBanner: "banner-468x60",
-      leftSidebar: "skyscraper-160x300",
-      rightSidebar: "skyscraper-160x300",
+      topBanner: "leaderboard-728x90",
+      bottomBanner: "leaderboard-728x90",
+      leftSidebar: "skyscraper-160x600",
+      rightSidebar: "skyscraper-160x600",
       centerMedium: "banner-300x250",
-      additionalOffers: ["direct-link", "container", "banner-300x250", "banner-300x250"]
+      additionalOffers: ["direct-link", "container", "banner-300x250", "banner-300x250"],
+      mobileBanner: "mobile-banner-320x50"
     }
   },
   

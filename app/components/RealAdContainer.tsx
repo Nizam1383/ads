@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import Script from 'next/script';
 
 interface RealAdContainerProps {
-  adType: 'banner-468x60' | 'banner-300x250' | 'skyscraper-160x300' | 'container' | 'direct-link' | 'large-banner' | 'mobile-banner';
+  adType: 'banner-468x60' | 'banner-300x250' | 'skyscraper-160x300' | 'skyscraper-160x600' | 'container' | 'direct-link' | 'large-banner' | 'mobile-banner' | 'mobile-banner-320x50' | 'leaderboard-728x90';
   onClick: () => void;
   className?: string;
   title?: string;
@@ -100,7 +100,86 @@ export default function RealAdContainer({ adType, onClick, className = '', title
           </div>
         );
 
-      case 'container':
+      case 'skyscraper-160x600':
+        return (
+          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+            {title && (
+              <div className="bg-gray-100 px-2 py-1 text-center border-b border-gray-200">
+                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              </div>
+            )}
+            <div className="p-2">
+              <div className="w-full min-h-[600px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
+                <Script id={`skyscraper-160x600-${Math.random()}`}>
+                  {`
+                    atOptions = {
+                      'key' : '5c47052fe2ed147e484f0f8f22a195a2',
+                      'format' : 'iframe',
+                      'height' : 600,
+                      'width' : 160,
+                      'params' : {}
+                    };
+                  `}
+                </Script>
+                <Script src="https://www.highperformanceformat.com/5c47052fe2ed147e484f0f8f22a195a2/invoke.js" />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'mobile-banner-320x50':
+        return (
+          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+            {title && (
+              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
+                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              </div>
+            )}
+            <div className="p-2">
+              <div className="w-full min-h-[50px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
+                <Script id={`mobile-banner-320x50-${Math.random()}`}>
+                  {`
+                    atOptions = {
+                      'key' : 'ce20dc930600898be06db897979ab284',
+                      'format' : 'iframe',
+                      'height' : 50,
+                      'width' : 320,
+                      'params' : {}
+                    };
+                  `}
+                </Script>
+                <Script src="https://www.highperformanceformat.com/ce20dc930600898be06db897979ab284/invoke.js" />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'leaderboard-728x90':
+        return (
+          <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
+            {title && (
+              <div className="bg-gray-100 px-3 py-1 text-center border-b border-gray-200">
+                <span className="text-xs text-gray-600 font-medium">{title}</span>
+              </div>
+            )}
+            <div className="p-3">
+              <div className="w-full min-h-[90px] bg-white rounded border border-gray-100 flex items-center justify-center overflow-hidden">
+                <Script id={`leaderboard-728x90-${Math.random()}`}>
+                  {`
+                    atOptions = {
+                      'key' : '92c8efaac9aec6de86f242bd4cf5e90b',
+                      'format' : 'iframe',
+                      'height' : 90,
+                      'width' : 728,
+                      'params' : {}
+                    };
+                  `}
+                </Script>
+                <Script src="https://www.highperformanceformat.com/92c8efaac9aec6de86f242bd4cf5e90b/invoke.js" />
+              </div>
+            </div>
+          </div>
+        );
         return (
           <div className={`bg-gray-50 border border-gray-200 rounded-md overflow-hidden ${className}`} onClick={handleAdClick}>
             {title && (

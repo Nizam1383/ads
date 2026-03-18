@@ -32,10 +32,10 @@ export default function Unlock() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-4">
-        {/* Top Banner Ad */}
+        {/* Top Banner Ad - Use leaderboard */}
         <div className="mb-4">
           <RealAdContainer 
-            adType="large-banner" 
+            adType="leaderboard-728x90" 
             onClick={handleAdClick}
             title="Advertisement"
           />
@@ -43,10 +43,10 @@ export default function Unlock() {
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-12 gap-4 mb-4">
-          {/* Left Sidebar */}
+          {/* Left Sidebar - Use taller skyscraper */}
           <div className="lg:col-span-2">
             <RealAdContainer 
-              adType="skyscraper-160x300" 
+              adType="skyscraper-160x600" 
               onClick={handleAdClick}
               title="Sponsored"
             />
@@ -126,10 +126,10 @@ export default function Unlock() {
             </div>
           </div>
 
-          {/* Right Sidebar */}
+          {/* Right Sidebar - Use taller skyscraper */}
           <div className="lg:col-span-2">
             <RealAdContainer 
-              adType="skyscraper-160x300" 
+              adType="skyscraper-160x600" 
               onClick={handleAdClick}
               title="Sponsored"
             />
@@ -157,10 +157,10 @@ export default function Unlock() {
           </div>
         </div>
 
-        {/* Bottom Banner */}
+        {/* Bottom Banner - Use leaderboard */}
         <div className="mb-4">
           <RealAdContainer 
-            adType="large-banner" 
+            adType="leaderboard-728x90" 
             onClick={handleAdClick}
             title="Advertisement"
           />
@@ -185,10 +185,10 @@ export default function Unlock() {
           </p>
         </div>
 
-        {/* Mobile Banner */}
+        {/* Mobile Banner - Use new mobile format */}
         <div className="mt-4 md:hidden">
           <RealAdContainer 
-            adType="mobile-banner" 
+            adType="mobile-banner-320x50" 
             onClick={handleAdClick}
             title="Advertisement"
           />
