@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
-import RealAdContainer from '../components/RealAdContainer';
+import { useEffect, useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
+import RealAdContainer from "../components/RealAdContainer";
 
 export default function Step3() {
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState(10);
   const [adClicked, setAdClicked] = useState(false);
-  
+
   // Calculate canProceed based on current state
   const canProceed = useMemo(() => {
     return timeLeft === 0 && adClicked;
@@ -34,7 +34,7 @@ export default function Step3() {
 
   const handleNext = () => {
     if (canProceed) {
-      router.push('/unlock');
+      router.push("/unlock");
     }
   };
 
@@ -44,8 +44,12 @@ export default function Step3() {
       <div className="bg-white border-b border-gray-200 py-4">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-800">🔐 Link Gateway</h1>
-            <p className="text-gray-600 mt-1">Final Step - You&apos;re almost there!</p>
+            <h1 className="text-2xl font-bold text-gray-800">
+              🔐 Link Gateway
+            </h1>
+            <p className="text-gray-600 mt-1">
+              Final Step - You&apos;re almost there!
+            </p>
             <div className="mt-2 inline-flex items-center bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
               🔥 FINAL STEP - UNLOCK COMING SOON!
             </div>
@@ -57,13 +61,13 @@ export default function Step3() {
         {/* Top Banner Ad - Mix of Google AdSense and other networks */}
         <div className="mb-4">
           <div className="grid md:grid-cols-2 gap-4">
-            <RealAdContainer 
-              adType="google-leaderboard" 
+            <RealAdContainer
+              adType="google-leaderboard"
               onClick={handleAdClick}
               title="Google AdSense Premium"
             />
-            <RealAdContainer 
-              adType="leaderboard-728x90" 
+            <RealAdContainer
+              adType="leaderboard-728x90"
               onClick={handleAdClick}
               title="Premium Advertisement"
             />
@@ -74,17 +78,21 @@ export default function Step3() {
         <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center space-x-4">
-              <div className="text-4xl font-bold text-purple-600">{timeLeft}s</div>
+              <div className="text-4xl font-bold text-purple-600">
+                {timeLeft}s
+              </div>
               <div className="text-sm text-gray-600">
                 {timeLeft === 0 && !adClicked && (
-                  <span className="text-red-600 font-medium animate-pulse">⚠️ CLICK ANY AD TO UNLOCK!</span>
+                  <span className="text-red-600 font-medium animate-pulse">
+                    ⚠️ CLICK ANY AD TO UNLOCK!
+                  </span>
                 )}
                 {adClicked && timeLeft === 0 && (
-                  <span className="text-green-600 font-medium animate-pulse">🎉 READY TO UNLOCK!</span>
+                  <span className="text-green-600 font-medium animate-pulse">
+                    🎉 READY TO UNLOCK!
+                  </span>
                 )}
-                {timeLeft > 0 && (
-                  <span>Final countdown - click any ad</span>
-                )}
+                {timeLeft > 0 && <span>Final countdown - click any ad</span>}
               </div>
             </div>
             <div className="text-right">
@@ -95,8 +103,8 @@ export default function Step3() {
             </div>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-purple-600 h-2 rounded-full transition-all duration-1000" 
+            <div
+              className="bg-purple-600 h-2 rounded-full transition-all duration-1000"
               style={{ width: `${((10 - timeLeft) / 10) * 100}%` }}
             ></div>
           </div>
@@ -104,16 +112,20 @@ export default function Step3() {
 
         {/* Featured Premium Offer */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-4 mb-4 text-white text-center">
-          <h2 className="text-xl font-bold mb-2">🌟 EXCLUSIVE FINAL OFFER! 🌟</h2>
-          <p className="mb-3">Don&apos;t miss this last chance - click any ad below to unlock</p>
+          <h2 className="text-xl font-bold mb-2">
+            🌟 EXCLUSIVE FINAL OFFER! 🌟
+          </h2>
+          <p className="mb-3">
+            Don&apos;t miss this last chance - click any ad below to unlock
+          </p>
         </div>
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-12 gap-4 mb-4">
           {/* Left Sidebar - Use taller skyscraper */}
           <div className="lg:col-span-2">
-            <RealAdContainer 
-              adType="skyscraper-160x600" 
+            <RealAdContainer
+              adType="skyscraper-160x600"
               onClick={handleAdClick}
               title="Sponsored"
             />
@@ -123,13 +135,13 @@ export default function Step3() {
           <div className="lg:col-span-8">
             {/* Main Ad Grid with Google AdSense */}
             <div className="grid md:grid-cols-2 gap-4 mb-4">
-              <RealAdContainer 
-                adType="google-banner" 
+              <RealAdContainer
+                adType="google-banner"
                 onClick={handleAdClick}
                 title="Google AdSense Premium"
               />
-              <RealAdContainer 
-                adType="banner-300x250" 
+              <RealAdContainer
+                adType="banner-300x250"
                 onClick={handleAdClick}
                 title="Premium Ad"
               />
@@ -137,20 +149,19 @@ export default function Step3() {
 
             {/* Container and Direct Link Ads */}
             <div className="grid md:grid-cols-2 gap-4 mb-4">
-              <RealAdContainer 
-                adType="container" 
+              <RealAdContainer
+                adType="container"
                 onClick={handleAdClick}
                 title="Sponsored Content"
               />
-              <RealAdContainer 
-                adType="direct-link" 
-                onClick={handleAdClick}
-              />
+              <RealAdContainer adType="direct-link" onClick={handleAdClick} />
             </div>
 
             {/* Final Instructions */}
             <div className="bg-white rounded-lg border-2 border-purple-200 p-4">
-              <h3 className="font-bold text-purple-700 mb-3 text-center">🏁 FINAL STEP INSTRUCTIONS</h3>
+              <h3 className="font-bold text-purple-700 mb-3 text-center">
+                🏁 FINAL STEP INSTRUCTIONS
+              </h3>
               <div className="grid md:grid-cols-3 gap-4 text-sm">
                 <div className="bg-purple-50 rounded-lg p-3 text-center">
                   <div className="text-2xl mb-1">⏰</div>
@@ -170,8 +181,8 @@ export default function Step3() {
 
           {/* Right Sidebar - Use taller skyscraper */}
           <div className="lg:col-span-2">
-            <RealAdContainer 
-              adType="skyscraper-160x600" 
+            <RealAdContainer
+              adType="skyscraper-160x600"
               onClick={handleAdClick}
               title="Sponsored"
             />
@@ -180,8 +191,8 @@ export default function Step3() {
 
         {/* Bottom Ad Row */}
         <div className="grid md:grid-cols-3 gap-4 mb-4">
-          <RealAdContainer 
-            adType="banner-300x250" 
+          <RealAdContainer
+            adType="banner-300x250"
             onClick={handleAdClick}
             title="Advertisement"
           />
@@ -194,8 +205,8 @@ export default function Step3() {
               Step 3 of 3 • Almost done!
             </div>
           </div>
-          <RealAdContainer 
-            adType="banner-300x250" 
+          <RealAdContainer
+            adType="banner-300x250"
             onClick={handleAdClick}
             title="Advertisement"
           />
@@ -208,13 +219,15 @@ export default function Step3() {
             disabled={!canProceed}
             className={`px-12 py-4 rounded-lg font-bold text-lg transition-all ${
               canProceed
-                ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 cursor-pointer animate-pulse'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 cursor-pointer animate-pulse"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }`}
           >
-            {canProceed ? '🔓 UNLOCK YOUR CONTENT NOW!' : 'Please wait and click an ad'}
+            {canProceed
+              ? "🔓 UNLOCK YOUR CONTENT NOW!"
+              : "Please wait and click an ad"}
           </button>
-          
+
           {canProceed && (
             <p className="mt-3 text-purple-600 font-bold animate-bounce">
               🎉 CONGRATULATIONS! Click above to unlock!
@@ -224,8 +237,8 @@ export default function Step3() {
 
         {/* Mobile Banner - Use new mobile format */}
         <div className="mt-4 md:hidden">
-          <RealAdContainer 
-            adType="mobile-banner-320x50" 
+          <RealAdContainer
+            adType="mobile-banner-320x50"
             onClick={handleAdClick}
             title="Advertisement"
           />
