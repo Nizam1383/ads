@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import RealAdContainer from './components/RealAdContainer';
 
 export default function Home() {
   const router = useRouter();
@@ -40,99 +41,136 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-4">
-      <div className="max-w-4xl w-full">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Link Gateway</h1>
-          <p className="text-lg text-gray-600">Step 1 of 3 - Almost there!</p>
+        <div className="text-center mb-8 pt-8">
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">🔐 Link Gateway</h1>
+          <p className="text-lg text-gray-600">Step 1 of 3 - Please wait and interact with ads</p>
         </div>
 
-        {/* Timer */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6 text-center">
-          <div className="text-6xl font-bold text-indigo-600 mb-2">{timeLeft}</div>
-          <p className="text-gray-600">seconds remaining</p>
+        {/* Timer Section */}
+        <div className="bg-white rounded-lg shadow-xl p-8 mb-8 text-center">
+          <div className="text-7xl font-bold text-indigo-600 mb-4">{timeLeft}</div>
+          <p className="text-xl text-gray-600 mb-4">seconds remaining</p>
+          <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
+            <div 
+              className="bg-indigo-600 h-3 rounded-full transition-all duration-1000" 
+              style={{ width: `${((20 - timeLeft) / 20) * 100}%` }}
+            ></div>
+          </div>
           {timeLeft === 0 && !adClicked && (
-            <p className="text-red-500 mt-2">Please click an ad to continue</p>
+            <p className="text-red-500 text-lg font-semibold">⚠️ Please click on any advertisement below to continue</p>
           )}
           {adClicked && timeLeft === 0 && (
-            <p className="text-green-500 mt-2">Ready to proceed!</p>
+            <p className="text-green-500 text-lg font-semibold">✅ Ready to proceed to next step!</p>
           )}
         </div>
 
-        {/* Ad Sections */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {/* Ad 1 */}
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-lg font-semibold mb-4 text-center">Advertisement</h3>
-            <div 
-              className="bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg p-8 text-white text-center cursor-pointer hover:from-purple-500 hover:to-pink-500 transition-all"
+        {/* Main Content Area with Ads */}
+        <div className="grid lg:grid-cols-4 gap-6 mb-8">
+          {/* Left Sidebar - Skyscraper Ad */}
+          <div className="lg:col-span-1">
+            <RealAdContainer 
+              adType="skyscraper-160x300" 
               onClick={handleAdClick}
-            >
-              <div className="text-2xl font-bold mb-2">🎯 Special Offer!</div>
-              <p className="mb-4">Click here for amazing deals</p>
-              <div className="bg-white text-purple-600 px-4 py-2 rounded-full inline-block font-semibold">
-                Click Me!
-              </div>
-            </div>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              * This is a placeholder ad. Replace with actual ad network code.
-            </p>
+              className="sticky top-4"
+            />
           </div>
 
-          {/* Ad 2 */}
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-lg font-semibold mb-4 text-center">Advertisement</h3>
-            <div 
-              className="bg-gradient-to-r from-green-400 to-blue-400 rounded-lg p-8 text-white text-center cursor-pointer hover:from-green-500 hover:to-blue-500 transition-all"
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Top Banner Ad */}
+            <RealAdContainer 
+              adType="banner-468x60" 
               onClick={handleAdClick}
-            >
-              <div className="text-2xl font-bold mb-2">💰 Earn Money!</div>
-              <p className="mb-4">Start earning today</p>
-              <div className="bg-white text-green-600 px-4 py-2 rounded-full inline-block font-semibold">
-                Learn More
+            />
+
+            {/* Instructions */}
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h3 className="text-xl font-semibold mb-4 text-center">📋 Instructions</h3>
+              <div className="space-y-3 text-gray-700">
+                <div className="flex items-center space-x-3">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">1</span>
+                  <span>Wait for the 20-second countdown to complete</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">2</span>
+                  <span>Click on any advertisement on this page</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">3</span>
+                  <span>The "Continue" button will become active</span>
+                </div>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              * This is a placeholder ad. Replace with actual ad network code.
-            </p>
+
+            {/* Medium Rectangle Ad */}
+            <RealAdContainer 
+              adType="banner-300x250" 
+              onClick={handleAdClick}
+            />
+
+            {/* Direct Link Ad */}
+            <RealAdContainer 
+              adType="direct-link" 
+              onClick={handleAdClick}
+            />
+          </div>
+
+          {/* Right Sidebar - Another Skyscraper */}
+          <div className="lg:col-span-1">
+            <RealAdContainer 
+              adType="container" 
+              onClick={handleAdClick}
+              className="sticky top-4"
+            />
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Progress</span>
-            <span className="text-sm font-medium text-gray-700">33%</span>
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-lg font-semibold text-gray-700">Overall Progress</span>
+            <span className="text-lg font-semibold text-indigo-600">33%</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-indigo-600 h-2 rounded-full w-1/3"></div>
+          <div className="w-full bg-gray-200 rounded-full h-4">
+            <div className="bg-indigo-600 h-4 rounded-full w-1/3 transition-all"></div>
+          </div>
+          <div className="flex justify-between mt-2 text-sm text-gray-500">
+            <span>Step 1</span>
+            <span>Step 2</span>
+            <span>Step 3</span>
+            <span>Unlock</span>
           </div>
         </div>
 
-        {/* Next Button */}
-        <div className="text-center">
+        {/* Continue Button */}
+        <div className="text-center pb-8">
           <button
             onClick={handleNext}
             disabled={!canProceed}
-            className={`px-8 py-4 rounded-lg font-semibold text-lg transition-all ${
+            className={`px-12 py-4 rounded-xl font-bold text-xl transition-all transform ${
               canProceed
-                ? 'bg-indigo-600 text-white hover:bg-indigo-700 cursor-pointer'
+                ? 'bg-indigo-600 text-white hover:bg-indigo-700 hover:scale-105 shadow-lg cursor-pointer'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            {canProceed ? 'Continue to Step 2' : 'Please wait and click an ad'}
+            {canProceed ? '🚀 Continue to Step 2' : '⏳ Please wait and click an ad'}
           </button>
+          
+          {canProceed && (
+            <p className="mt-4 text-green-600 font-semibold animate-pulse">
+              🎉 Great! You can now proceed to the next step
+            </p>
+          )}
         </div>
 
-        {/* Instructions */}
-        <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <h4 className="font-semibold text-yellow-800 mb-2">Instructions:</h4>
-          <ul className="text-sm text-yellow-700 space-y-1">
-            <li>• Wait for the timer to reach 0</li>
-            <li>• Click on at least one advertisement above</li>
-            <li>• The "Continue" button will become active</li>
-          </ul>
+        {/* Footer Info */}
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
+          <p className="text-yellow-800 font-medium">
+            💡 Tip: Clicking on ads helps support free content access
+          </p>
         </div>
       </div>
     </div>

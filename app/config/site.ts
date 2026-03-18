@@ -14,108 +14,70 @@ export const siteConfig = {
   finalLink: "https://example.com/your-download-link",
   finalContent: "Your exclusive content is now available!",
   
-  // Ad Network Configuration
+  // Real Ad Network Configuration
   ads: {
-    // Set to true when you have real ads configured
-    useRealAds: false,
+    // Set to true since we now have real ads configured
+    useRealAds: true,
     
-    // Ad Network IDs (replace with your actual IDs)
-    adSense: {
-      publisherId: "ca-pub-XXXXXXXXX",
-      adSlots: {
-        step1_ad1: "XXXXXXXXX",
-        step1_ad2: "XXXXXXXXX",
-        step2_ad1: "XXXXXXXXX",
-        step2_ad2: "XXXXXXXXX",
-        step2_ad3: "XXXXXXXXX",
-        step2_banner: "XXXXXXXXX",
-        step3_banner: "XXXXXXXXX",
-        step3_ad1: "XXXXXXXXX",
-        step3_ad2: "XXXXXXXXX",
+    // Ad Network Scripts and IDs
+    effectiveGateCPM: {
+      popUnder1: "https://pl28938643.effectivegatecpm.com/ce/98/7d/ce987d5617b66a4e3f971d1345b37f99.js",
+      popUnder2: "https://pl28938657.effectivegatecpm.com/35/33/16/3533169f95d2d051ffd28dfb6039e44a.js",
+      directLink: "https://www.effectivegatecpm.com/x5kjfdhe?key=2d99602e86ebc798fcb36d0c2c1d0cb4",
+      containerAd: {
+        script: "https://pl28938658.effectivegatecpm.com/5e73c74d0f8ac206ea5b9830785fb1ac/invoke.js",
+        containerId: "container-5e73c74d0f8ac206ea5b9830785fb1ac"
       }
     },
     
-    propellerAds: {
-      siteId: "XXXXXXX",
-      zones: {
-        banner: "XXXXXXX",
-        square: "XXXXXXX",
-        large: "XXXXXXX",
-      }
-    },
-    
-    adsterra: {
-      keys: {
-        banner: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        square: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        large: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    highPerformanceFormat: {
+      banner468x60: {
+        key: "a1bc5a1e59c5468243f3048190ac9fa9",
+        script: "https://www.highperformanceformat.com/a1bc5a1e59c5468243f3048190ac9fa9/invoke.js"
+      },
+      banner300x250: {
+        key: "a388ca2af8457b290856c125811ac381",
+        script: "https://www.highperformanceformat.com/a388ca2af8457b290856c125811ac381/invoke.js"
+      },
+      skyscraper160x300: {
+        key: "74fecf5727a3b75fdd3fa5f6dfd32702",
+        script: "https://www.highperformanceformat.com/74fecf5727a3b75fdd3fa5f6dfd32702/invoke.js"
       }
     }
   },
   
-  // Placeholder Ad Content
-  placeholderAds: {
-    step1: [
-      {
-        title: "🎯 Special Offer!",
-        description: "Click here for amazing deals",
-        buttonText: "Click Me!",
-        gradient: "bg-gradient-to-r from-purple-400 to-pink-400"
-      },
-      {
-        title: "💰 Earn Money!",
-        description: "Start earning today",
-        buttonText: "Learn More",
-        gradient: "bg-gradient-to-r from-green-400 to-blue-400"
-      }
-    ],
-    step2: [
-      {
-        title: "🔥 Hot Deal!",
-        description: "Limited time offer",
-        buttonText: "Get Now",
-        gradient: "bg-gradient-to-r from-red-400 to-orange-400"
-      },
-      {
-        title: "💎 Premium",
-        description: "Upgrade your experience",
-        buttonText: "Try Free",
-        gradient: "bg-gradient-to-r from-blue-400 to-cyan-400"
-      },
-      {
-        title: "🚀 Launch",
-        description: "Start your journey",
-        buttonText: "Begin",
-        gradient: "bg-gradient-to-r from-purple-400 to-indigo-400"
-      }
-    ],
-    step3: [
-      {
-        title: "💰 Make Money Online",
-        description: "Start earning from home today",
-        buttonText: "Start Now",
-        gradient: "bg-gradient-to-r from-teal-400 to-blue-500"
-      },
-      {
-        title: "🎯 Best Deals",
-        description: "Save up to 80% on everything",
-        buttonText: "Shop Now",
-        gradient: "bg-gradient-to-r from-orange-400 to-red-500"
-      }
-    ],
-    banners: {
-      step2: {
-        title: "🎉 Special Promotion!",
-        description: "Don't miss out on this exclusive opportunity",
-        buttonText: "Click Here Now!",
-        gradient: "bg-gradient-to-r from-yellow-400 to-orange-400"
-      },
-      step3: {
-        title: "🌟 EXCLUSIVE OFFER 🌟",
-        description: "Get premium access to amazing content and services",
-        buttonText: "CLAIM NOW - LIMITED TIME!",
-        gradient: "bg-gradient-to-r from-pink-500 to-purple-600"
-      }
+  // Ad Placement Strategy
+  adPlacements: {
+    step1: {
+      topBanner: "banner-468x60",
+      leftSidebar: "skyscraper-160x300",
+      centerMedium: "banner-300x250",
+      rightSidebar: "container",
+      directLink: "direct-link"
+    },
+    step2: {
+      topBanner: "banner-468x60",
+      leftSidebar: "skyscraper-160x300",
+      centerGrid: ["banner-300x250", "banner-300x250"],
+      rightSidebar: "skyscraper-160x300",
+      container: "container",
+      directLink: "direct-link"
+    },
+    step3: {
+      topBanner: "banner-468x60",
+      leftSidebar: "skyscraper-160x300",
+      centerGrid: ["banner-300x250", "banner-300x250"],
+      rightSidebar: "skyscraper-160x300",
+      container: "container",
+      directLink: "direct-link"
+    },
+    unlock: {
+      topBanner: "banner-468x60",
+      bottomBanner: "banner-468x60",
+      leftSidebar: "skyscraper-160x300",
+      rightSidebar: "skyscraper-160x300",
+      centerMedium: "banner-300x250",
+      additionalOffers: ["direct-link", "container", "banner-300x250", "banner-300x250"]
     }
   },
   
@@ -128,7 +90,7 @@ export const siteConfig = {
   
   // SEO
   seo: {
-    keywords: "link locker, ad gateway, unlock content, download link",
+    keywords: "link locker, ad gateway, unlock content, download link, free access",
     ogImage: "/og-image.jpg", // Add your OG image
   }
 };
