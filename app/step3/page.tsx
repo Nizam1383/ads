@@ -51,7 +51,7 @@ export default function Step3() {
               Final Step - You&apos;re almost there!
             </p>
             <div className="mt-2 inline-flex items-center bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
-              🔥 FINAL STEP - UNLOCK COMING SOON!
+              🔥 FINAL STEP - UNLOCK COMING SOON !
             </div>
           </div>
         </div>
