@@ -41,174 +41,189 @@ export default function Step3() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 p-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8 pt-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">🔐 Link Gateway</h1>
-          <p className="text-lg text-gray-600">Final Step - You're almost there!</p>
-          <div className="mt-4 inline-flex items-center bg-purple-100 text-purple-800 px-4 py-2 rounded-full">
-            <span className="animate-pulse mr-2">🔥</span>
-            <span className="font-semibold">FINAL STEP - UNLOCK COMING SOON!</span>
+    <div className="min-h-screen bg-gray-100">
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200 py-4">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-800">🔐 Link Gateway</h1>
+            <p className="text-gray-600 mt-1">Final Step - You're almost there!</p>
+            <div className="mt-2 inline-flex items-center bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+              🔥 FINAL STEP - UNLOCK COMING SOON!
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Timer Section */}
-        <div className="bg-white rounded-lg shadow-xl p-8 mb-8 text-center">
-          <div className="text-8xl font-bold text-purple-600 mb-4">{timeLeft}</div>
-          <p className="text-xl text-gray-600 mb-4">seconds to unlock</p>
-          <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
-            <div 
-              className="bg-purple-600 h-4 rounded-full transition-all duration-1000" 
-              style={{ width: `${((10 - timeLeft) / 10) * 100}%` }}
-            ></div>
-          </div>
-          {timeLeft === 0 && !adClicked && (
-            <p className="text-red-500 text-xl font-bold animate-bounce">⚠️ CLICK ANY AD TO UNLOCK YOUR CONTENT!</p>
-          )}
-          {adClicked && timeLeft === 0 && (
-            <p className="text-green-500 text-xl font-bold animate-pulse">🎉 READY TO UNLOCK! Click the button below!</p>
-          )}
-        </div>
-
-        {/* Premium Ad Section */}
-        <div className="mb-8">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold text-purple-700">🌟 PREMIUM OFFERS 🌟</h2>
-            <p className="text-gray-600">Click any ad below to unlock your content</p>
-          </div>
-          
-          {/* Large Banner Ad */}
+      <div className="max-w-6xl mx-auto px-4 py-4">
+        {/* Top Banner Ad */}
+        <div className="mb-4">
           <RealAdContainer 
-            adType="banner-468x60" 
+            adType="large-banner" 
             onClick={handleAdClick}
-            className="mb-6"
+            title="Premium Advertisement"
           />
         </div>
 
+        {/* Timer and Progress */}
+        <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center space-x-4">
+              <div className="text-4xl font-bold text-purple-600">{timeLeft}s</div>
+              <div className="text-sm text-gray-600">
+                {timeLeft === 0 && !adClicked && (
+                  <span className="text-red-600 font-medium animate-pulse">⚠️ CLICK ANY AD TO UNLOCK!</span>
+                )}
+                {adClicked && timeLeft === 0 && (
+                  <span className="text-green-600 font-medium animate-pulse">🎉 READY TO UNLOCK!</span>
+                )}
+                {timeLeft > 0 && (
+                  <span>Final countdown - click any ad</span>
+                )}
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-sm text-gray-500 mb-1">Progress: 100%</div>
+              <div className="w-32 bg-gray-200 rounded-full h-2">
+                <div className="bg-purple-600 h-2 rounded-full w-full animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="bg-purple-600 h-2 rounded-full transition-all duration-1000" 
+              style={{ width: `${((10 - timeLeft) / 10) * 100}%` }}
+            ></div>
+          </div>
+        </div>
+
+        {/* Featured Premium Offer */}
+        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-4 mb-4 text-white text-center">
+          <h2 className="text-xl font-bold mb-2">🌟 EXCLUSIVE FINAL OFFER! 🌟</h2>
+          <p className="mb-3">Don't miss this last chance - click any ad below to unlock</p>
+        </div>
+
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-5 gap-6 mb-8">
+        <div className="grid lg:grid-cols-12 gap-4 mb-4">
           {/* Left Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <RealAdContainer 
               adType="skyscraper-160x300" 
               onClick={handleAdClick}
-              className="sticky top-4"
+              title="Sponsored"
             />
           </div>
 
           {/* Center Content */}
-          <div className="lg:col-span-3 space-y-6">
-            {/* Featured Direct Link Ad */}
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-6 text-white text-center">
-              <h3 className="text-2xl font-bold mb-4">🎯 EXCLUSIVE FINAL OFFER!</h3>
-              <p className="text-lg mb-6">Don't miss this last chance for premium access</p>
+          <div className="lg:col-span-8">
+            {/* Main Ad Grid */}
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <RealAdContainer 
+                adType="banner-300x250" 
+                onClick={handleAdClick}
+                title="Premium Ad"
+              />
+              <RealAdContainer 
+                adType="banner-300x250" 
+                onClick={handleAdClick}
+                title="Premium Ad"
+              />
+            </div>
+
+            {/* Container and Direct Link Ads */}
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <RealAdContainer 
+                adType="container" 
+                onClick={handleAdClick}
+                title="Sponsored Content"
+              />
               <RealAdContainer 
                 adType="direct-link" 
                 onClick={handleAdClick}
               />
             </div>
 
-            {/* Medium Rectangle Ads Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <RealAdContainer 
-                adType="banner-300x250" 
-                onClick={handleAdClick}
-              />
-              <RealAdContainer 
-                adType="banner-300x250" 
-                onClick={handleAdClick}
-              />
-            </div>
-
-            {/* Container Ad */}
-            <RealAdContainer 
-              adType="container" 
-              onClick={handleAdClick}
-            />
-
             {/* Final Instructions */}
-            <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-purple-200">
-              <h3 className="text-xl font-bold text-purple-700 mb-4 text-center">🏁 FINAL STEP INSTRUCTIONS</h3>
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-purple-50 rounded-lg p-4 text-center">
-                  <div className="text-3xl mb-2">⏰</div>
-                  <div className="font-semibold text-purple-700">Wait 10 Seconds</div>
-                  <p className="text-sm text-gray-600 mt-1">Timer must reach zero</p>
+            <div className="bg-white rounded-lg border-2 border-purple-200 p-4">
+              <h3 className="font-bold text-purple-700 mb-3 text-center">🏁 FINAL STEP INSTRUCTIONS</h3>
+              <div className="grid md:grid-cols-3 gap-4 text-sm">
+                <div className="bg-purple-50 rounded-lg p-3 text-center">
+                  <div className="text-2xl mb-1">⏰</div>
+                  <div className="font-semibold text-purple-700">Wait 10s</div>
                 </div>
-                <div className="bg-purple-50 rounded-lg p-4 text-center">
-                  <div className="text-3xl mb-2">👆</div>
-                  <div className="font-semibold text-purple-700">Click Any Ad</div>
-                  <p className="text-sm text-gray-600 mt-1">Interact with advertisements</p>
+                <div className="bg-purple-50 rounded-lg p-3 text-center">
+                  <div className="text-2xl mb-1">👆</div>
+                  <div className="font-semibold text-purple-700">Click Ad</div>
                 </div>
-                <div className="bg-purple-50 rounded-lg p-4 text-center">
-                  <div className="text-3xl mb-2">🔓</div>
-                  <div className="font-semibold text-purple-700">Unlock Content</div>
-                  <p className="text-sm text-gray-600 mt-1">Access your link</p>
+                <div className="bg-purple-50 rounded-lg p-3 text-center">
+                  <div className="text-2xl mb-1">🔓</div>
+                  <div className="font-semibold text-purple-700">Unlock</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <RealAdContainer 
               adType="skyscraper-160x300" 
               onClick={handleAdClick}
-              className="sticky top-4"
+              title="Sponsored"
             />
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <div className="flex justify-between items-center mb-3">
-            <span className="text-lg font-semibold text-gray-700">Overall Progress</span>
-            <span className="text-lg font-semibold text-purple-600">100%</span>
+        {/* Bottom Ad Row */}
+        <div className="grid md:grid-cols-3 gap-4 mb-4">
+          <RealAdContainer 
+            adType="banner-300x250" 
+            onClick={handleAdClick}
+            title="Advertisement"
+          />
+          <div className="bg-white rounded-lg border border-gray-200 p-4 text-center">
+            <h4 className="font-bold text-purple-700 mb-2">🏆 Final Step!</h4>
+            <p className="text-sm text-gray-600 mb-2">
+              Click any ad above to unlock your content instantly!
+            </p>
+            <div className="text-xs text-purple-600 font-medium">
+              Step 3 of 3 • Almost done!
+            </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-4">
-            <div className="bg-purple-600 h-4 rounded-full w-full transition-all animate-pulse"></div>
-          </div>
-          <div className="flex justify-between mt-2 text-sm">
-            <span className="text-purple-600 font-semibold">✓ Step 1</span>
-            <span className="text-purple-600 font-semibold">✓ Step 2</span>
-            <span className="text-purple-600 font-semibold">✓ Step 3</span>
-            <span className="text-purple-600 font-semibold animate-pulse">🔓 UNLOCK</span>
-          </div>
+          <RealAdContainer 
+            adType="banner-300x250" 
+            onClick={handleAdClick}
+            title="Advertisement"
+          />
         </div>
 
         {/* Unlock Button */}
-        <div className="text-center pb-8">
+        <div className="bg-white rounded-lg border border-gray-200 p-4 text-center">
           <button
             onClick={handleNext}
             disabled={!canProceed}
-            className={`px-16 py-6 rounded-xl font-bold text-2xl transition-all transform ${
+            className={`px-12 py-4 rounded-lg font-bold text-lg transition-all ${
               canProceed
-                ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 hover:scale-105 shadow-2xl cursor-pointer animate-pulse'
+                ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 cursor-pointer animate-pulse'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            {canProceed ? '🔓 UNLOCK YOUR CONTENT NOW!' : '⏳ Please wait and click an ad'}
+            {canProceed ? '🔓 UNLOCK YOUR CONTENT NOW!' : 'Please wait and click an ad'}
           </button>
           
           {canProceed && (
-            <div className="mt-6 space-y-2">
-              <p className="text-purple-600 font-bold text-xl animate-bounce">
-                🎉 CONGRATULATIONS! Your content is ready!
-              </p>
-              <p className="text-gray-600">
-                Click the button above to access your exclusive content
-              </p>
-            </div>
+            <p className="mt-3 text-purple-600 font-bold animate-bounce">
+              🎉 CONGRATULATIONS! Click above to unlock!
+            </p>
           )}
         </div>
 
-        {/* Final Motivation */}
-        <div className="bg-gradient-to-r from-green-100 to-blue-100 border border-green-200 rounded-lg p-6 text-center">
-          <h4 className="text-xl font-bold text-green-700 mb-2">🏆 You're Almost Done!</h4>
-          <p className="text-green-600 font-medium">
-            Just click any advertisement above and your content will be unlocked instantly!
-          </p>
+        {/* Mobile Banner */}
+        <div className="mt-4 md:hidden">
+          <RealAdContainer 
+            adType="mobile-banner" 
+            onClick={handleAdClick}
+            title="Advertisement"
+          />
         </div>
       </div>
     </div>
